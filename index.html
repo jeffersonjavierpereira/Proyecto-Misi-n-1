@@ -4,24 +4,13 @@
     <meta charset="UTF-8">
     <title>Gabba store </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; background: #f7f7f7; }
-        header { background: #222; color: #fff; padding: 1em 2em; }
-        nav { margin-top: 1em; }
-        nav a { color: #fff; margin-right: 1em; text-decoration: none; }
-        .container { max-width: 1200px; margin: 2em auto; padding: 1em; background: #fff; border-radius: 8px; }
-        .productos { display: flex; flex-wrap: wrap; gap: 2em; }
-        .producto { background: #fafafa; border: 1px solid #ddd; border-radius: 6px; width: 220px; padding: 1em; text-align: center; }
-        .producto img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; }
-        .producto h3 { margin: 0.5em 0; }
-        .producto p { color: #555; }
-        .producto button { background: #222; color: #fff; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer; }
-        .producto button:hover { background: #444; }
-        footer { text-align: center; padding: 2em 0; background: #222; color: #fff; margin-top: 2em; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
+
+        <img src="img/gaba.jpg" alt="Gabba Store Logo" class="logo">
         <h1>Gabba store</h1>
         <nav>
             <a href="#">Inicio</a>
@@ -31,37 +20,75 @@
             <a href="#">Carrito</a>
         </nav>
     </header>
+
+    
+
+    <div class="banner">
+    <p>¡Bienvenido a Gabba Store! Descubre las mejores prendas para toda la familia.</p>
+</div>
+
     <div class="container">
         <h2>Productos Destacados</h2>
+
+        
         <div class="productos">
             <div class="producto">
                 <img src="img/img2.jpg"alt="Vestido casual">
                 <h3>Licra</h3>
-                <p>Licra moldeadora de mujer , disponible en varios colores.</p>
-                <strong>$40.0000</strong>
+                <p>Licra moldeadora de mujer, disponible en varios colores.</p>
+                <div class="detalles">
+                    <span>⭐⭐⭐⭐☆</span>
+                    <span>Tallas: S, M, L</span>
+                </div>
+                <strong>$40.000</strong>
                 <br>
-                <button>Agregar al carrito</button>
+                <button>
+                    <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                    Agregar al carrito
+                </button>
             </div>
             <div class="producto">
                 <img src="img/img1.jpg" alt="Vestido elegante">
                 <h3>Vestido Elegante</h3>
                 <p>Vestido para mujer, ideal para eventos especiales.</p>
+                <div class="detalles">
+                    <span>⭐⭐⭐⭐⭐</span>
+                    <span>Tallas: M, L</span>
+                </div>
                 <strong>$80.000</strong>
                 <br>
-                <button>Agregar al carrito</button>
+                <button>
+                    <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                    Agregar al carrito
+                </button>
             </div>
             <div class="producto">
                 <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Sudadera deportiva">
                 <h3>Sudadera Deportiva</h3>
                 <p>Sudadera cómoda para niños, perfecta para el día a día.</p>
-                <strong>$18.00</strong>
+                <div class="detalles">
+                    <span>⭐⭐⭐⭐</span>
+                    <span>Tallas: 6, 8, 10</span>
+                </div>
+                <strong>$18.000</strong>
                 <br>
-                <button>Agregar al carrito</button>
+                <button>
+                    <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                    Agregar al carrito
+                </button>
             </div>
         </div>
     </div>
     <footer>
-        &copy; 2024 Tienda de Ropa. Todos los derechos reservados.
-    </footer>
+    <div>
+        &copy; 2024 Gabba Store. Todos los derechos reservados.<br>
+        <a href="mailto:contacto@gabbastore.com">Contacto</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Facebook</a>
+    </div>
+    <div>
+        <small>Desarrollado por tu nombre</small>
+    </div>
+</footer>
 </body>
 </html>

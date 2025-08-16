@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gabba Store | Hombres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Tienda de ropa elegante para hombres. Trajes, camisas, zapatos y más en Gabba Store.">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Mejora visual rápida para la sección de productos */
+        .productos-caballeros {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        .producto-caballero {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #bbb;
+            width: 260px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .producto-caballero:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 6px 20px #aaa;
+        }
+        .producto-caballero img {
+            width: 180px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .producto-caballero h3 {
+            margin: 10px 0 6px 0;
+            color: #222;
+        }
+        .producto-caballero p {
+            color: #555;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .producto-caballero .precio {
+            color: #1a8917;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+        .producto-caballero button {
+            background: #222;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 24px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.2s;
+        }
+        .producto-caballero button:hover {
+            background: #444;
+        }
+        @media (max-width: 800px) {
+            .productos-caballeros {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="img/gaba.jpg" alt="Gabba Store Logo" class="logo"></a>
+        <h1>Gabba store</h1>
+        <nav>
+            <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1em;">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="caballeros.html" style="font-weight:bold;color:#1a8917;">Hombres</a></li>
+                <li><a href="#">Mujeres</a></li>
+                <li><a href="#">Niños</a></li>
+                <li><a href="#">Carrito</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="hombres" style="padding: 40px 0; background: #f4f4f4;">
+            <div style="max-width: 1100px; margin: auto; text-align: center;">
+                <h2 style="font-size: 2.5em; color: #222; margin-bottom: 20px;">Tienda de Ropa para Hombres</h2>
+                <p style="font-size: 1.2em; color: #555; margin-bottom: 30px;">
+                    Descubre nuestra exclusiva selección de ropa elegante para caballeros.<br>
+                    Trajes, camisas, zapatos y accesorios de la mejor calidad para destacar en cualquier ocasión.
+                </p>
+                <div class="productos-caballeros">
+                    <div class="producto-caballero">
+                        <img src="img/img5.jpg" alt="Traje elegante">
+                        <h3>Traje Ejecutivo</h3>
+                        <p>Traje slim fit, ideal para eventos y oficina.</p>
+                        <div class="precio">$320.000</div>
+                        <button>Agregar al carrito</button>
+                    </div>
+                    <div class="producto-caballero">
+                        <img src="img/img6.jpg" alt="Camisa elegante">
+                        <h3>Camisa Formal</h3>
+                        <p>Camisa de algodón premium, varios colores.</p>
+                        <div class="precio">$85.000</div>
+                        <button>Agregar al carrito</button>
+                    </div>
+                    <div class="producto-caballero">
+                        <img src="img/img7.jpg" alt="Zapatos elegantes">
+                        <h3>Zapatos de Cuero</h3>
+                        <p>Zapatos elegantes, cómodos y resistentes.</p>
+                        <div class="precio">$150.000</div>
+                        <button>Agregar al carrito</button>
+                    </div>
+                    <div class="producto-caballero">
+                        <img src="img/corbatin.jpg" alt="Corbatín">
+                        <h3>Corbatín de Seda</h3>
+                        <p>Accesorio perfecto para un look distinguido.</p>
+                        <div class="precio">$35.000</div>
+                        <button>Agregar al carrito</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        &copy; 2024 Gabba Store. Todos los derechos reservados.
+    </footer>
+</body>
+</html>

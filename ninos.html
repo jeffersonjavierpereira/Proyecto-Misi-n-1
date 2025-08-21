@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gabba store - Niños</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gabba Store: Ropa para niños. Descubre prendas infantiles cómodas y divertidas.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header role="banner">
+        <img src="img/gaba.jpg" alt="Gabba Store Logo" class="logo">
+        <h1>Gabba store</h1>
+        <nav role="navigation" aria-label="Menú principal">
+            <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1em;">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="hombres.html">Hombres</a></li>
+                <li><a href="mujeres.html">Mujeres</a></li>
+                <li><a href="ninos.html" style="color: #0d47a1; border-bottom: 2px solid #1976d2;">Niños</a></li>
+                <li><a href="carrito.html">Carrito <span id="cart-count">(0)</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Banner de la sección -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Colección para Niños</h2>
+                <p>Ropa cómoda y divertida para los más pequeños de la casa.</p>
+            </div>
+        </section>
+
+        <!-- Filtros -->
+        <section class="container">
+            <h2>Filtrar Productos</h2>
+            <div class="filtros" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <select id="filtro-categoria" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todos">Todas las categorías</option>
+                    <option value="camisetas">Camisetas</option>
+                    <option value="pantalones">Pantalones</option>
+                    <option value="sudaderas">Sudaderas</option>
+                    <option value="vestidos">Vestidos</option>
+                    <option value="zapatos">Zapatos</option>
+                </select>
+                <select id="filtro-edad" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todas">Todas las edades</option>
+                    <option value="2-4">2-4 años</option>
+                    <option value="4-6">4-6 años</option>
+                    <option value="6-8">6-8 años</option>
+                    <option value="8-10">8-10 años</option>
+                    <option value="10-12">10-12 años</option>
+                </select>
+                <select id="filtro-genero" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todos">Niños y Niñas</option>
+                    <option value="niños">Niños</option>
+                    <option value="niñas">Niñas</option>
+                    <option value="unisex">Unisex</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Productos para Niños -->
+        <section class="container" aria-labelledby="productos-ninos">
+            <h2 id="productos-ninos">Productos para Niños</h2>
+            <div class="productos" id="productos-container">
+                <div class="producto" data-categoria="sudaderas" data-edad="6-8" data-genero="unisex">
+                    <img src="img/img9.JPG" alt="Sudadera deportiva">
+                    <h3>Sudadera Deportiva</h3>
+                    <p>Sudadera cómoda para niños, perfecta para el día a día.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: 6, 8, 10</span>
+                    </div>
+                    <strong>$18.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Sudadera Deportiva', 18000, 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Sudadera Deportiva al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="camisetas" data-edad="4-6" data-genero="niños">
+                    <img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?auto=format&fit=crop&w=400&q=80" alt="Camiseta superhéroes">
+                    <h3>Camiseta Superhéroes</h3>
+                    <p>Camiseta divertida con estampado de superhéroes favoritos.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: 4, 6, 8</span>
+                    </div>
+                    <strong>$15.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Camiseta Superhéroes', 15000, 'https://images.unsplash.com/photo-1503944583220-79d8926ad5e2?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Camiseta Superhéroes al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="vestidos" data-edad="6-8" data-genero="niñas">
+                    <img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=400&q=80" alt="Vestido princesa">
+                    <h3>Vestido Princesa</h3>
+                    <p>Hermoso vestido con diseño de princesa, perfecto para ocasiones especiales.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: 6, 8, 10</span>
+                    </div>
+                    <strong>$25.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Vestido Princesa', 25000, 'https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Vestido Princesa al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="zapatos" data-edad="6-8" data-genero="unisex">
+                    <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=400&q=80" alt="Zapatillas deportivas">
+                    <h3>Zapatillas Deportivas</h3>
+                    <p>Zapatillas cómodas y coloridas, perfectas para correr y jugar.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: 26, 28, 30, 32</span>
+                    </div>
+                    <strong>$35.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Zapatillas Deportivas', 35000, 'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Zapatillas Deportivas al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+               </div>
+                <div class="producto" data-categoria="sudaderas" data-edad="10-12" data-genero="niños">
+                    <img src="img/img7.JPG" alt="Sudadera con capucha">
+                    <h3>Sudadera con Capucha</h3>
+                    <p>Sudadera abrigada con capucha y diseño moderno.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: 10, 12, 14</span>
+                    </div>
+                    <strong>$28.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Sudadera con Capucha', 28000, 'https://images.unsplash.com/photo-1519554318711-aaf99b562c7a?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Sudadera con Capucha al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="vestidos" data-edad="4-6" data-genero="niñas">
+                    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&q=80" alt="Vestido casual">
+                    <h3>Vestido Casual</h3>
+                    <p>Vestido cómodo para uso diario, con estampado floral.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: 4, 6, 8</span>
+                    </div>
+                    <strong>$20.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Vestido Casual Niñas', 20000, 'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Vestido Casual al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Consejos para padres -->
+        <section class="container sobre-nosotros">
+            <h2>Consejos para Elegir Ropa Infantil</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 1rem;">
+                <div style="background: #f5faff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1976d2;">
+                    <h3 style="color: #1976d2; margin-bottom: 0.5rem;">🌟 Comodidad Primero</h3>
+                    <p>Elige prendas con telas suaves y cortes holgados que permitan el movimiento libre de los niños.</p>
+                </div>
+                <div style="background: #f5faff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1976d2;">
+                    <h3 style="color: #1976d2; margin-bottom: 0.5rem;">📏 Talla Correcta</h3>
+                    <p>Considera comprar una talla ligeramente más grande para que la ropa dure más tiempo mientras crecen.</p>
+                </div>
+                <div style="background: #f5faff; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #1976d2;">
+                    <h3 style="color: #1976d2; margin-bottom: 0.5rem;">🧼 Fácil Lavado</h3>
+                    <p>Busca prendas que sean fáciles de lavar y que mantengan su forma y color después de múltiples lavadas.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div>
+            &copy; 2024 Gabba Store. Todos los derechos reservados.<br>
+            <a href="https://wa.me/573104273591" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> 
+            </a>
+            &nbsp;|&nbsp;
+            <a href="#" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i> 
+            </a>
+        </div>
+        <div>
+            <small>
+                <a href="https://wa.me/573158352636" target="_blank" rel="noopener">
+                    Desarrollado por Henko <i class="fab fa-whatsapp"></i>
+                </a>
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales para el carrito
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        // Función para agregar productos al carrito
+        function agregarAlCarrito(nombre, precio, imagen) {
+            const producto = {
+                nombre: nombre,
+                precio: precio,
+                imagen: imagen,
+                cantidad: 1,
+                id: Date.now() + Math.random()
+            };
+            
+            // Verificar si el producto ya existe en el carrito
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push(producto);
+            }
+            
+            // Actualizar contador del carrito
+            actualizarContadorCarrito();
+            
+            // Guardar en localStorage
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            
+            // Mostrar mensaje de confirmación
+            mostrarMensaje('¡Producto agregado al carrito!');
+        }
+
+        // Función para actualizar el contador del carrito
+        function actualizarContadorCarrito() {
+            const contador = document.getElementById('cart-count');
+            const totalProductos = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+            contador.textContent = `(${totalProductos})`;
+        }
+
+        // Función para mostrar mensajes
+        function mostrarMensaje(mensaje) {
+            // Remover mensaje anterior si existe
+            const mensajeAnterior = document.querySelector('.notification-message');
+            if (mensajeAnterior) {
+                document.body.removeChild(mensajeAnterior);
+            }
+            
+            const mensajeDiv = document.createElement('div');
+            mensajeDiv.className = 'notification-message';
+            mensajeDiv.textContent = mensaje;
+            mensajeDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #1976d2;
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                z-index: 1000;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+                animation: slideInRight 0.3s ease;
+                font-weight: 500;
+            `;
+            
+            // Agregar estilos CSS si no existen
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideInRight {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes fadeOut {
+                        from { opacity: 1; }
+                        to { opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(mensajeDiv);
+            
+            // Hacer fade out antes de remover
+            setTimeout(() => {
+                mensajeDiv.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    if (document.body.contains(mensajeDiv)) {
+                        document.body.removeChild(mensajeDiv);
+                    }
+                }, 300);
+            }, 2700);
+        }
+
+        // Funciones de filtrado
+        function filtrarProductos() {
+            const categoriaSeleccionada = document.getElementById('filtro-categoria').value;
+            const edadSeleccionada = document.getElementById('filtro-edad').value;
+            const generoSeleccionado = document.getElementById('filtro-genero').value;
+            const productos = document.querySelectorAll('.producto');
+            
+            productos.forEach(producto => {
+                let mostrar = true;
+                
+                // Filtrar por categoría
+                if (categoriaSeleccionada !== 'todos') {
+                    const categoria = producto.getAttribute('data-categoria');
+                    if (categoria !== categoriaSeleccionada) {
+                        mostrar = false;
+                    }
+                }
+                
+                // Filtrar por edad
+                if (edadSeleccionada !== 'todas' && mostrar) {
+                    const edad = producto.getAttribute('data-edad');
+                    if (edad !== edadSeleccionada) {
+                        mostrar = false;
+                    }
+                }
+                
+                // Filtrar por género
+                if (generoSeleccionado !== 'todos' && mostrar) {
+                    const genero = producto.getAttribute('data-genero');
+                    if (genero !== generoSeleccionado && genero !== 'unisex') {
+                        mostrar = false;
+                    }
+                }
+                
+                // Mostrar u ocultar producto con animación
+                if (mostrar) {
+                    producto.style.display = 'block';
+                    producto.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        // Event listeners para los filtros
+        document.getElementById('filtro-categoria').addEventListener('change', filtrarProductos);
+        document.getElementById('filtro-edad').addEventListener('change', filtrarProductos);
+        document.getElementById('filtro-genero').addEventListener('change', filtrarProductos);
+
+        // Cargar carrito y configurar animaciones al iniciar la página
+        window.addEventListener('load', () => {
+            actualizarContadorCarrito();
+            
+            // Agregar estilos de animación
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+                .producto {
+                    transition: all 0.3s ease;
+                }
+                .producto:hover {
+                    transform: translateY(-5px) scale(1.02);
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+
+      <script src="./Script.js"></script>
+</body>
+</html>

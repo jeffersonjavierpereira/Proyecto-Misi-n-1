@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gabba store - Hombres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gabba Store: Ropa para hombres. Descubre prendas masculinas de calidad.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header role="banner">
+        <img src="img/gaba.jpg" alt="Gabba Store Logo" class="logo">
+        <h1>Gabba store</h1>
+        <nav role="navigation" aria-label="Menú principal">
+            <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1em;">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="hombres.html" style="color: #0d47a1; border-bottom: 2px solid #1976d2;">Hombres</a></li>
+                <li><a href="mujeres.html">Mujeres</a></li>
+                <li><a href="ninos.html">Niños</a></li>
+                <li><a href="carrito.html">Carrito <span id="cart-count">(0)</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Banner de la sección -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Colección para Hombres</h2>
+                <p>Descubre nuestra selección de ropa masculina con estilo y comodidad.</p>
+            </div>
+        </section>
+
+        <!-- Filtros -->
+        <section class="container">
+            <h2>Filtrar Productos</h2>
+            <div class="filtros" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <select id="filtro-categoria" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todos">Todas las categorías</option>
+                    <option value="camisas">Camisas</option>
+                    <option value="pantalones">Pantalones</option>
+                    <option value="chaquetas">Chaquetas</option>
+                    <option value="zapatos">Zapatos</option>
+                </select>
+                <select id="filtro-precio" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todos">Todos los precios</option>
+                    <option value="0-50000">$0 - $50.000</option>
+                    <option value="50000-100000">$50.000 - $100.000</option>
+                    <option value="100000-150000">$100.000 - $150.000</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Productos para Hombres -->
+        <section class="container" aria-labelledby="productos-hombres">
+            <h2 id="productos-hombres">Productos para Hombres</h2>
+            <div class="productos" id="productos-container">
+                <div class="producto" data-categoria="camisas" data-precio="55000">
+                    <img src="img/img3.jpg" alt="Camisa oversize">
+                    <h3>Camisa Oversize</h3>
+                    <p>Estilo urbano, disponible en varios colores.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: S, M, L, XL</span>
+                    </div>
+                    <strong>$55.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Camisa Oversize', 55000, 'img/img3.jpg')" aria-label="Agregar Camisa Oversize al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="pantalones" data-precio="70000">
+                    <img src="img/img4.jpg" alt="Pantalón cargo">
+                    <h3>Pantalón Cargo</h3>
+                    <p>Comodidad y estilo para cualquier ocasión.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: 28, 30, 32, 34</span>
+                    </div>
+                    <strong>$70.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Pantalón Cargo', 70000, 'img/img4.jpg')" aria-label="Agregar Pantalón Cargo al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="camisas" data-precio="45000">
+                    <img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?auto=format&fit=crop&w=400&q=80" alt="Camisa casual">
+                    <h3>Camisa Casual</h3>
+                    <p>Perfecta para el día a día, corte clásico y cómodo.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: S, M, L, XL</span>
+                    </div>
+                    <strong>$45.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Camisa Casual', 45000, 'https://images.unsplash.com/photo-1571945153237-4929e783af4a?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Camisa Casual al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="pantalones" data-precio="65000">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=80" alt="Jeans clásicos">
+                    <h3>Jeans Clásicos</h3>
+                    <p>Jeans de corte recto, resistentes y versátiles.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: 30, 32, 34, 36</span>
+                    </div>
+                    <strong>$65.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Jeans Clásicos', 65000, 'https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Jeans Clásicos al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="chaquetas" data-precio="120000">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80" alt="Chaqueta deportiva">
+                    <h3>Chaqueta Deportiva</h3>
+                    <p>Chaqueta ligera, ideal para ejercicio y actividades al aire libre.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: M, L, XL</span>
+                    </div>
+                    <strong>$120.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Chaqueta Deportiva', 120000, 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Chaqueta Deportiva al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="zapatos" data-precio="85000">
+                    <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80" alt="Zapatos casuales">
+                    <h3>Zapatos Casuales</h3>
+                    <p>Zapatos cómodos para uso diario, diseño moderno.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: 39, 40, 41, 42</span>
+                    </div>
+                    <strong>$85.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Zapatos Casuales', 85000, 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Zapatos Casuales al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información adicional -->
+        <section class="container sobre-nosotros">
+            <h2>¿Por qué elegir nuestra ropa para hombres?</h2>
+            <p>
+                Nuestra colección masculina combina calidad, comodidad y estilo. Seleccionamos cuidadosamente cada prenda para garantizar durabilidad y un ajuste perfecto. Desde ropa casual hasta formal, tenemos opciones para cada ocasión.
+            </p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div>
+            &copy; 2024 Gabba Store. Todos los derechos reservados.<br>
+            <a href="https://wa.me/573104273591" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> 
+            </a>
+            &nbsp;|&nbsp;
+            <a href="#" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i> 
+            </a>
+        </div>
+        <div>
+            <small>
+                <a href="https://wa.me/573158352636" target="_blank" rel="noopener">
+                    Desarrollado por Henko <i class="fab fa-whatsapp"></i>
+                </a>
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales para el carrito
+        let carrito = [];
+
+        // Función para agregar productos al carrito
+        function agregarAlCarrito(nombre, precio, imagen) {
+            const producto = {
+                nombre: nombre,
+                precio: precio,
+                imagen: imagen,
+                cantidad: 1
+            };
+            
+            // Verificar si el producto ya existe en el carrito
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push(producto);
+            }
+            
+            // Actualizar contador del carrito
+            actualizarContadorCarrito();
+            
+            // Guardar en localStorage (simulado con variable)
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            
+            // Mostrar mensaje de confirmación
+            mostrarMensaje('¡Producto agregado al carrito!');
+        }
+
+        // Función para actualizar el contador del carrito
+        function actualizarContadorCarrito() {
+            const contador = document.getElementById('cart-count');
+            const totalProductos = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+            contador.textContent = `(${totalProductos})`;
+        }
+
+        // Función para mostrar mensajes
+        function mostrarMensaje(mensaje) {
+            const mensajeDiv = document.createElement('div');
+            mensajeDiv.textContent = mensaje;
+            mensajeDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #1976d2;
+                color: white;
+                padding: 1rem;
+                border-radius: 4px;
+                z-index: 1000;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            `;
+            
+            document.body.appendChild(mensajeDiv);
+            
+            setTimeout(() => {
+                document.body.removeChild(mensajeDiv);
+            }, 3000);
+        }
+
+        // Funciones de filtrado
+        function filtrarProductos() {
+            const categoriaSeleccionada = document.getElementById('filtro-categoria').value;
+            const precioSeleccionado = document.getElementById('filtro-precio').value;
+            const productos = document.querySelectorAll('.producto');
+            
+            productos.forEach(producto => {
+                let mostrar = true;
+                
+                // Filtrar por categoría
+                if (categoriaSeleccionada !== 'todos') {
+                    const categoria = producto.getAttribute('data-categoria');
+                    if (categoria !== categoriaSeleccionada) {
+                        mostrar = false;
+                    }
+                }
+                
+                // Filtrar por precio
+                if (precioSeleccionado !== 'todos' && mostrar) {
+                    const precio = parseInt(producto.getAttribute('data-precio'));
+                    const [min, max] = precioSeleccionado.split('-').map(p => parseInt(p));
+                    
+                    if (precio < min || precio > max) {
+                        mostrar = false;
+                    }
+                }
+                
+                // Mostrar u ocultar producto
+                producto.style.display = mostrar ? 'block' : 'none';
+            });
+        }
+
+        // Event listeners para los filtros
+        document.getElementById('filtro-categoria').addEventListener('change', filtrarProductos);
+        document.getElementById('filtro-precio').addEventListener('change', filtrarProductos);
+
+        // Cargar carrito al iniciar la página
+        window.addEventListener('load', () => {
+            const carritoGuardado = localStorage.getItem('carrito');
+            if (carritoGuardado) {
+                carrito = JSON.parse(carritoGuardado);
+                actualizarContadorCarrito();
+            }
+        });
+    </script>
+    <script src="./Script.js"></script>
+</body>
+</html>

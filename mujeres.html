@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gabba store - Mujeres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gabba Store: Ropa para mujeres. Descubre prendas femeninas de calidad.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header role="banner">
+        <img src="img/gaba.jpg" alt="Gabba Store Logo" class="logo">
+        <h1>Gabba store</h1>
+        <nav role="navigation" aria-label="Menú principal">
+            <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1em;">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="hombres.html">Hombres</a></li>
+                <li><a href="mujeres.html" style="color: #0d47a1; border-bottom: 2px solid #1976d2;">Mujeres</a></li>
+                <li><a href="ninos.html">Niños</a></li>
+                <li><a href="carrito.html">Carrito <span id="cart-count">(0)</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Banner de la sección -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Colección para Mujeres</h2>
+                <p>Encuentra tu estilo perfecto con nuestra elegante colección femenina.</p>
+            </div>
+        </section>
+
+        <!-- Filtros -->
+        <section class="container">
+            <h2>Filtrar Productos</h2>
+            <div class="filtros" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                <select id="filtro-categoria" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todos">Todas las categorías</option>
+                    <option value="vestidos">Vestidos</option>
+                    <option value="blusas">Blusas</option>
+                    <option value="pantalones">Pantalones</option>
+                    <option value="licras">Licras</option>
+                    <option value="zapatos">Zapatos</option>
+                </select>
+                <select id="filtro-precio" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todos">Todos los precios</option>
+                    <option value="0-50000">$0 - $50.000</option>
+                    <option value="50000-100000">$50.000 - $100.000</option>
+                    <option value="100000-200000">$100.000 - $200.000</option>
+                </select>
+                <select id="filtro-talla" style="padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px;">
+                    <option value="todas">Todas las tallas</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Productos para Mujeres -->
+        <section class="container" aria-labelledby="productos-mujeres">
+            <h2 id="productos-mujeres">Productos para Mujeres</h2>
+            <div class="productos" id="productos-container">
+                <div class="producto" data-categoria="licras" data-precio="40000" data-tallas="S,M,L">
+                    <img src="img/img2.jpg" alt="Licra moldeadora">
+                    <h3>Licra Moldeadora</h3>
+                    <p>Licra moldeadora de mujer, disponible en varios colores.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐☆</span>
+                        <span>Tallas: S, M, L</span>
+                    </div>
+                    <strong>$40.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Licra Moldeadora', 40000, 'img/img2.jpg')" aria-label="Agregar Licra al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="vestidos" data-precio="80000" data-tallas="M,L">
+                    <img src="img/img1.jpg" alt="Vestido elegante">
+                    <h3>Vestido Elegante</h3>
+                    <p>Vestido para mujer, ideal para eventos especiales.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: M, L</span>
+                    </div>
+                    <strong>$80.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Vestido Elegante', 80000, 'img/img1.jpg')" aria-label="Agregar Vestido Elegante al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="blusas" data-precio="35000" data-tallas="XS,S,M,L">
+                    <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=80" alt="Blusa casual">
+                    <h3>Blusa Casual</h3>
+                    <p>Blusa fresca y cómoda, perfecta para cualquier ocasión.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: XS, S, M, L</span>
+                    </div>
+                    <strong>$35.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Blusa Casual', 35000, 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Blusa Casual al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="pantalones" data-precio="60000" data-tallas="S,M,L,XL">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=400&q=80" alt="Pantalón skinny">
+                    <h3>Pantalón Skinny</h3>
+                    <p>Pantalón ajustado de tiro alto, muy versátil y cómodo.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: S, M, L, XL</span>
+                    </div>
+                    <strong>$60.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Pantalón Skinny', 60000, 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Pantalón Skinny al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="vestidos" data-precio="95000" data-tallas="S,M,L">
+                    <img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=400&q=80" alt="Vestido casual">
+                    <h3>Vestido Casual</h3>
+                    <p>Vestido cómodo para uso diario, estilo bohemio.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: S, M, L</span>
+                    </div>
+                    <strong>$95.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Vestido Casual', 95000, 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Vestido Casual al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="zapatos" data-precio="75000" data-tallas="35,36,37,38,39">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=400&q=80" alt="Zapatos de tacón">
+                    <h3>Zapatos de Tacón</h3>
+                    <p>Elegantes zapatos de tacón medio, ideales para ocasiones especiales.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: 35, 36, 37, 38, 39</span>
+                    </div>
+                    <strong>$75.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Zapatos de Tacón', 75000, 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Zapatos de Tacón al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="blusas" data-precio="42000" data-tallas="S,M,L,XL">
+                    <img src="img/img5.JPG" alt="Blusa elegante">
+                    <h3>Blusa Elegante</h3>
+                    <p>Blusa sofisticada, perfecta para el trabajo o eventos formales.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐⭐</span>
+                        <span>Tallas: S, M, L, XL</span>
+                    </div>
+                    <strong>$42.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Blusa Elegante', 42000, 'https://images.unsplash.com/photo-1564257577385-8833a22050f1?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Blusa Elegante al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+                <div class="producto" data-categoria="licras" data-precio="38000" data-tallas="XS,S,M,L">
+                    <img src="img/img6.JPG" alt="Licra deportiva">
+                    <h3>Licra Deportiva</h3>
+                    <p>Licra transpirable para ejercicio y actividades deportivas.</p>
+                    <div class="detalles">
+                        <span>⭐⭐⭐⭐</span>
+                        <span>Tallas: XS, S, M, L</span>
+                    </div>
+                    <strong>$38.000</strong>
+                    <br>
+                    <button type="button" onclick="agregarAlCarrito('Licra Deportiva', 38000, 'https://images.unsplash.com/photo-1506629905607-b5f0d284e1b8?auto=format&fit=crop&w=400&q=80')" aria-label="Agregar Licra Deportiva al carrito">
+                        <img src="img/cart.svg" alt="Carrito" style="height:1em;vertical-align:middle;margin-right:0.5em;">
+                        Agregar al carrito
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Información adicional -->
+        <section class="container sobre-nosotros">
+            <h2>Nuestra Colección Femenina</h2>
+            <p>
+                Diseñamos cada prenda pensando en la mujer moderna: elegante, versátil y cómoda. Desde vestidos sofisticados hasta ropa deportiva, encontrarás piezas que se adaptan a tu estilo de vida y realzan tu personalidad única.
+            </p>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div>
+            &copy; 2024 Gabba Store. Todos los derechos reservados.<br>
+            <a href="https://wa.me/573104273591" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> 
+            </a>
+            &nbsp;|&nbsp;
+            <a href="#" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i> 
+            </a>
+        </div>
+        <div>
+            <small>
+                <a href="https://wa.me/573158352636" target="_blank" rel="noopener">
+                    Desarrollado por Henko <i class="fab fa-whatsapp"></i>
+                </a>
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales para el carrito
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        // Función para agregar productos al carrito
+        function agregarAlCarrito(nombre, precio, imagen) {
+            const producto = {
+                nombre: nombre,
+                precio: precio,
+                imagen: imagen,
+                cantidad: 1,
+                id: Date.now() + Math.random()
+            };
+            
+            // Verificar si el producto ya existe en el carrito
+            const productoExistente = carrito.find(item => item.nombre === nombre);
+            
+            if (productoExistente) {
+                productoExistente.cantidad++;
+            } else {
+                carrito.push(producto);
+            }
+            
+            // Actualizar contador del carrito
+            actualizarContadorCarrito();
+            
+            // Guardar en localStorage
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            
+            // Mostrar mensaje de confirmación
+            mostrarMensaje('¡Producto agregado al carrito!');
+        }
+
+        // Función para actualizar el contador del carrito
+        function actualizarContadorCarrito() {
+            const contador = document.getElementById('cart-count');
+            const totalProductos = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+            contador.textContent = `(${totalProductos})`;
+        }
+
+        // Función para mostrar mensajes
+        function mostrarMensaje(mensaje) {
+            const mensajeDiv = document.createElement('div');
+            mensajeDiv.textContent = mensaje;
+            mensajeDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #1976d2;
+                color: white;
+                padding: 1rem;
+                border-radius: 4px;
+                z-index: 1000;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                animation: slideIn 0.3s ease;
+            `;
+            
+            // Agregar animación CSS
+            if (!document.getElementById('notification-styles')) {
+                const style = document.createElement('style');
+                style.id = 'notification-styles';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); }
+                        to { transform: translateX(0); }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(mensajeDiv);
+            
+            setTimeout(() => {
+                if (document.body.contains(mensajeDiv)) {
+                    document.body.removeChild(mensajeDiv);
+                }
+            }, 3000);
+        }
+
+        // Funciones de filtrado
+        function filtrarProductos() {
+            const categoriaSeleccionada = document.getElementById('filtro-categoria').value;
+            const precioSeleccionado = document.getElementById('filtro-precio').value;
+            const tallaSeleccionada = document.getElementById('filtro-talla').value;
+            const productos = document.querySelectorAll('.producto');
+            
+            productos.forEach(producto => {
+                let mostrar = true;
+                
+                // Filtrar por categoría
+                if (categoriaSeleccionada !== 'todos') {
+                    const categoria = producto.getAttribute('data-categoria');
+                    if (categoria !== categoriaSeleccionada) {
+                        mostrar = false;
+                    }
+                }
+                
+                // Filtrar por precio
+                if (precioSeleccionado !== 'todos' && mostrar) {
+                    const precio = parseInt(producto.getAttribute('data-precio'));
+                    const [min, max] = precioSeleccionado.split('-').map(p => parseInt(p));
+                    
+                    if (precio < min || precio > max) {
+                        mostrar = false;
+                    }
+                }
+                
+                // Filtrar por talla
+                if (tallaSeleccionada !== 'todas' && mostrar) {
+                    const tallas = producto.getAttribute('data-tallas');
+                    if (tallas && !tallas.includes(tallaSeleccionada)) {
+                        mostrar = false;
+                    }
+                }
+                
+                // Mostrar u ocultar producto con animación
+                if (mostrar) {
+                    producto.style.display = 'block';
+                    producto.style.animation = 'fadeIn 0.3s ease';
+                } else {
+                    producto.style.display = 'none';
+                }
+            });
+        }
+
+        // Event listeners para los filtros
+        document.getElementById('filtro-categoria').addEventListener('change', filtrarProductos);
+        document.getElementById('filtro-precio').addEventListener('change', filtrarProductos);
+        document.getElementById('filtro-talla').addEventListener('change', filtrarProductos);
+
+        // Cargar carrito al iniciar la página
+        window.addEventListener('load', () => {
+            actualizarContadorCarrito();
+            
+            // Agregar animación de fade in
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+    <script src="./Script.js"></script>
+</body>
+</html>

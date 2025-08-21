@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gabba store - Carrito</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gabba Store: Tu carrito de compras. Revisa y finaliza tu pedido.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .carrito-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: #fff;
+            transition: box-shadow 0.3s ease;
+        }
+        .carrito-item:hover {
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.1);
+        }
+        .carrito-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .item-info {
+            flex: 1;
+        }
+        .item-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #1976d2;
+        }
+        .item-precio {
+            font-weight: bold;
+            color: #1976d2;
+            font-size: 1.1rem;
+        }
+        .cantidad-control {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        .cantidad-btn {
+            background: #1976d2;
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: background 0.2s ease;
+        }
+        .cantidad-btn:hover {
+            background: #0d47a1;
+        }
+        .cantidad-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+        .btn-eliminar {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .btn-eliminar:hover {
+            background: #d32f2f;
+        }
+        .resumen-carrito {
+            background: linear-gradient(135deg, #e3f0ff 0%, #f9f9f9 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 2px solid #1976d2;
+            margin-top: 2rem;
+        }
+        .carrito-vacio {
+            text-align: center;
+            padding: 3rem;
+            color: #666;
+        }
+        .carrito-vacio i {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+        .checkout-form {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border: 1px solid #e0e0e0;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1976d2;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+        }
+        .btn-finalizar {
+            background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .btn-finalizar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+        }
+        .metodos-pago {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .metodo-pago {
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .metodo-pago:hover, .metodo-pago.selected {
+            border-color: #1976d2;
+            background: #e3f0ff;
+        }
+        .metodo-pago i {
+            font-size: 2rem;
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header role="banner">
+        <img src="img/gaba.jpg" alt="Gabba Store Logo" class="logo">
+        <h1>Gabba store</h1>
+        <nav role="navigation" aria-label="Menú principal">
+            <ul style="list-style:none; padding:0; margin:0; display:flex; gap:1em;">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="hombres.html">Hombres</a></li>
+                <li><a href="mujeres.html">Mujeres</a></li>
+                <li><a href="ninos.html">Niños</a></li>
+                <li><a href="carrito.html" style="color: #0d47a1; border-bottom: 2px solid #1976d2;">Carrito <span id="cart-count">(0)</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Banner de la sección -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Tu Carrito de Compras</h2>
+                <p>Revisa tus productos y finaliza tu pedido</p>
+            </div>
+        </section>
+
+        <section class="container">
+            <!-- Contenido del carrito -->
+            <div id="carrito-contenido">
+                <div class="carrito-vacio" id="carrito-vacio">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Tu carrito está vacío</h3>
+                    <p>¡Empieza a agregar productos para comenzar tu compra!</p>
+                    <a href="index.html" class="btn-cta" style="margin-top: 1rem; display: inline-block;">Ir de compras</a>
+                </div>
+                
+                <div id="carrito-items" style="display: none;">
+                    <h2>Productos en tu carrito</h2>
+                    <div id="lista-productos"></div>
+                    
+                    <!-- Resumen del carrito -->
+                    <div class="resumen-carrito">
+                        <h3 style="color: #1976d2; margin-bottom: 1rem;">Resumen del Pedido</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Envío:</span>
+                            <span id="envio">$5.000</span>
+                        </div>
+                        <hr style="margin: 1rem 0; border: 1px solid #1976d2;">
+                        <div style="display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: bold; color: #1976d2;">
+                            <span>Total:</span>
+                            <span id="total">$5.000</span>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de checkout -->
+                    <div class="checkout-form">
+                        <h3 style="color: #1976d2; margin-bottom: 1.5rem;">Información de Envío</h3>
+                        <form id="form-checkout">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                                <div class="form-group">
+                                    <label for="nombre">Nombre completo *</label>
+                                    <input type="text" id="nombre" name="nombre" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telefono">Teléfono *</label>
+                                    <input type="tel" id="telefono" name="telefono" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" id="email" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ciudad">Ciudad *</label>
+                                    <input type="text" id="ciudad" name="ciudad" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="direccion">Dirección completa *</label>
+                                <textarea id="direccion" name="direccion" rows="3" required placeholder="Incluye barrio, calle, número y referencias"></textarea>
+                            </div>
+                            
+                            <h4 style="color: #1976d2; margin: 2rem 0 1rem 0;">Método de Pago</h4>
+                            <div class="metodos-pago">
+                                <div class="metodo-pago" data-metodo="efectivo">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <div>Pago Contra Entrega</div>
+                                    <small>Efectivo</small>
+                                </div>
+                                <div class="metodo-pago" data-metodo="transferencia">
+                                    <i class="fas fa-university"></i>
+                                    <div>Transferencia</div>
+                                    <small>Bancaria</small>
+                                </div>
+                                <div class="metodo-pago" data-metodo="pse">
+                                    <i class="fas fa-credit-card"></i>
+                                    <div>PSE</div>
+                                    <small>Pago en línea</small>
+                                </div>
+                            </div>
+                            <input type="hidden" id="metodo-pago" name="metodo-pago" value="">
+                            
+                            <div class="form-group" style="margin-top: 2rem;">
+                                <label for="comentarios">Comentarios adicionales</label>
+                                <textarea id="comentarios" name="comentarios" rows="2" placeholder="Instrucciones especiales para la entrega..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-finalizar">
+                                <i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>
+                                Finalizar Pedido
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer role="contentinfo">
+        <div>
+            &copy; 2024 Gabba Store. Todos los derechos reservados.<br>
+            <a href="https://wa.me/573104273591" target="_blank" rel="noopener">
+                <i class="fab fa-whatsapp"></i> 
+            </a>
+            &nbsp;|&nbsp;
+            <a href="#" target="_blank" rel="noopener">
+                <i class="fab fa-instagram"></i> 
+            </a>
+        </div>
+        <div>
+            <small>
+                <a href="https://wa.me/573158352636" target="_blank" rel="noopener">
+                    Desarrollado por Henko <i class="fab fa-whatsapp"></i>
+                </a>
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        // Variables globales
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        const costoEnvio = 5000;
+
+        // Función para mostrar mensajes
+        function mostrarMensaje(mensaje, tipo = 'success') {
+            const mensajeAnterior = document.querySelector('.notification-message');
+            if (mensajeAnterior) {
+                document.body.removeChild(mensajeAnterior);
+            }
+            
+            const color = tipo === 'success' ? '#4caf50' : tipo === 'error' ? '#f44336' : '#1976d2';
+            
+            const mensajeDiv = document.createElement('div');
+            mensajeDiv.className = 'notification-message';
+            mensajeDiv.textContent = mensaje;
+            mensajeDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${color};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                z-index: 1000;
+                box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+                animation: slideInRight 0.3s ease;
+                font-weight: 500;
+            `;
+            
+            document.body.appendChild(mensajeDiv);
+            
+            setTimeout(() => {
+                mensajeDiv.style.animation = 'fadeOut 0.3s ease';
+                setTimeout(() => {
+                    if (document.body.contains(mensajeDiv)) {
+                        document.body.removeChild(mensajeDiv);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Función para actualizar el contador del carrito
+        function actualizarContadorCarrito() {
+            const contador = document.getElementById('cart-count');
+            const totalProductos = carrito.reduce((total, producto) => total + producto.cantidad, 0);
+            contador.textContent = `(${totalProductos})`;
+        }
+
+        // Función para formatear precio
+        function formatearPrecio(precio) {
+            return new Intl.NumberFormat('es-CO', {
+                style: 'currency',
+                currency: 'COP',
+                minimumFractionDigits: 0
+            }).format(precio);
+        }
+
+        // Función para renderizar el carrito
+        function renderizarCarrito() {
+            const carritoVacio = document.getElementById('carrito-vacio');
+            const carritoItems = document.getElementById('carrito-items');
+            const listaProductos = document.getElementById('lista-productos');
+            
+            if (carrito.length === 0) {
+                carritoVacio.style.display = 'block';
+                carritoItems.style.display = 'none';
+                return;
+            }
+            
+            carritoVacio.style.display = 'none';
+            carritoItems.style.display = 'block';
+            
+            listaProductos.innerHTML = '';
+            
+            carrito.forEach((producto, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'carrito-item';
+                itemDiv.innerHTML = `
+                    <img src="${producto.imagen}" alt="${producto.nombre}">
+                    <div class="item-info">
+                        <h3>${producto.nombre}</h3>
+                        <div class="item-precio">${formatearPrecio(producto.precio)}</div>
+                        <div class="cantidad-control">
+                            <button class="cantidad-btn" onclick="cambiarCantidad(${index}, -1)">-</button>
+                            <input type="number" class="cantidad-input" value="${producto.cantidad}" 
+                                   onchange="actualizarCantidad(${index}, this.value)" min="1">
+                            <button class="cantidad-btn" onclick="cambiarCantidad(${index}, 1)">+</button>
+                        </div>
+                        <div style="font-weight: bold; color: #1976d2;">
+                            Subtotal: ${formatearPrecio(producto.precio * producto.cantidad)}
+                        </div>
+                    </div>
+                    <button class="btn-eliminar" onclick="eliminarProducto(${index})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                `;
+                listaProductos.appendChild(itemDiv);
+            });
+            
+            actualizarResumen();
+        }
+
+        // Función para actualizar el resumen
+        function actualizarResumen() {
+            const subtotal = carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
+            const total = subtotal + (subtotal > 0 ? costoEnvio : 0);
+            
+            document.getElementById('subtotal').textContent = formatearPrecio(subtotal);
+            document.getElementById('envio').textContent = subtotal > 0 ? formatearPrecio(costoEnvio) : formatearPrecio(0);
+            document.getElementById('total').textContent = formatearPrecio(total);
+        }
+
+        // Función para cambiar cantidad
+        function cambiarCantidad(index, cambio) {
+            if (carrito[index].cantidad + cambio > 0) {
+                carrito[index].cantidad += cambio;
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                actualizarContadorCarrito();
+                renderizarCarrito();
+            }
+        }
+
+        // Función para actualizar cantidad directamente
+        function actualizarCantidad(index, nuevaCantidad) {
+            const cantidad = parseInt(nuevaCantidad);
+            if (cantidad > 0) {
+                carrito[index].cantidad = cantidad;
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                actualizarContadorCarrito();
+                renderizarCarrito();
+            }
+        }
+
+        // Función para eliminar producto
+        function eliminarProducto(index) {
+            const producto = carrito[index];
+            carrito.splice(index, 1);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            actualizarContadorCarrito();
+            renderizarCarrito();
+            mostrarMensaje(`${producto.nombre} eliminado del carrito`, 'info');
+        }
+
+        // Función para limpiar carrito
+        function limpiarCarrito() {
+            carrito = [];
+            localStorage.removeItem('carrito');
+            actualizarContadorCarrito();
+            renderizarCarrito();
+        }
+
+        // Configurar métodos de pago
+        function configurarMetodosPago() {
+            const metodos = document.querySelectorAll('.metodo-pago');
+            const inputMetodo = document.getElementById('metodo-pago');
+            
+            metodos.forEach(metodo => {
+                metodo.addEventListener('click', () => {
+                    metodos.forEach(m => m.classList.remove('selected'));
+                    metodo.classList.add('selected');
+                    inputMetodo.value = metodo.dataset.metodo;
+                });
+            });
+        }
+
+        // Función para enviar pedido por WhatsApp
+        function enviarPedidoWhatsApp(datos) {
+            let mensaje = `🛍️ *NUEVO PEDIDO - GABBA STORE*\n\n`;
+            mensaje += `👤 *Cliente:* ${datos.nombre}\n`;
+            mensaje += `📱 *Teléfono:* ${datos.telefono}\n`;
+            if (datos.email) mensaje += `📧 *Email:* ${datos.email}\n`;
+            mensaje += `🏠 *Ciudad:* ${datos.ciudad}\n`;
+            mensaje += `📍 *Dirección:* ${datos.direccion}\n\n`;
+            
+            mensaje += `🛒 *PRODUCTOS:*\n`;
+            carrito.forEach(producto => {
+                mensaje += `• ${producto.nombre}\n`;
+                mensaje += `  Cantidad: ${producto.cantidad}\n`;
+                mensaje += `  Precio: ${formatearPrecio(producto.precio)}\n`;
+                mensaje += `  Subtotal: ${formatearPrecio(producto.precio * producto.cantidad)}\n\n`;
+            });
+            
+            const subtotal = carrito.reduce((total, producto) => total + (producto.precio * producto.cantidad), 0);
+            const total = subtotal + costoEnvio;
+            
+            mensaje += `💰 *RESUMEN:*\n`;
+            mensaje += `Subtotal: ${formatearPrecio(subtotal)}\n`;
+            mensaje += `Envío: ${formatearPrecio(costoEnvio)}\n`;
+            mensaje += `*Total: ${formatearPrecio(total)}*\n\n`;
+            
+            const metodosTexto = {
+                'efectivo': 'Pago contra entrega (Efectivo)',
+                'transferencia': 'Transferencia bancaria',
+                'pse': 'PSE (Pago en línea)'
+            };
+            mensaje += `💳 *Método de pago:* ${metodosTexto[datos.metodoPago]}\n`;
+            
+            if (datos.comentarios) {
+                mensaje += `\n📝 *Comentarios:* ${datos.comentarios}`;
+            }
+            
+            const whatsappUrl = `https://wa.me/573104273591?text=${encodeURIComponent(mensaje)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Configurar formulario de checkout
+        function configurarFormulario() {
+            const form = document.getElementById('form-checkout');
+            
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const metodoPago = document.getElementById('metodo-pago').value;
+                
+                if (!metodoPago) {
+                    mostrarMensaje('Por favor selecciona un método de pago', 'error');
+                    return;
+                }
+                
+                const datos = {
+                    nombre: formData.get('nombre'),
+                    telefono: formData.get('telefono'),
+                    email: formData.get('email'),
+                    ciudad: formData.get('ciudad'),
+                    direccion: formData.get('direccion'),
+                    metodoPago: metodoPago,
+                    comentarios: formData.get('comentarios')
+                };
+                
+                // Validar campos requeridos
+                if (!datos.nombre || !datos.telefono || !datos.ciudad || !datos.direccion) {
+                    mostrarMensaje('Por favor completa todos los campos requeridos', 'error');
+                    return;
+                }
+                
+                // Enviar pedido
+                enviarPedidoWhatsApp(datos);
+                mostrarMensaje('¡Pedido enviado! Serás redirigido a WhatsApp', 'success');
+                
+                // Opcional: limpiar carrito después del pedido
+                setTimeout(() => {
+                    limpiarCarrito();
+                }, 2000);
+            });
+        }
+
+        // Inicializar página
+        window.addEventListener('load', () => {
+            actualizarContadorCarrito();
+            renderizarCarrito();
+            configurarMetodosPago();
+            configurarFormulario();
+            
+            // Agregar estilos de animación
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from { transform: translateX(100%); opacity: 0; }
+                    to { transform: translateX(0); opacity: 1; }
+                }
+                @keyframes fadeOut {
+                    from { opacity: 1; }
+                    to { opacity: 0; }
+                }
+                .carrito-item {
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+      <script src="./Script.js"></script>
+</body>
+</html>
